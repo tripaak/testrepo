@@ -2,8 +2,19 @@ pipeline {
   agent any
   stages {
     stage('test') {
-      steps {
-        sh 'csdjvsvkhfskv'
+      parallel {
+        stage('test') {
+          steps {
+            sh 'csdjvsvkhfskv'
+          }
+        }
+
+        stage('run performance plugin ') {
+          steps {
+            bzt 'locust/test.yaml'
+          }
+        }
+
       }
     }
 
